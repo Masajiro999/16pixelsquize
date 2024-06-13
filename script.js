@@ -216,6 +216,9 @@ ImasCg.Pixelsquize = function () {
     var gameStartCountDown = function (count) {
         $('#game-start-btn').val(count).prop('disabled', 'false');
         if (count == 0) {
+            if(currentChampionIndex < 0){
+                nextChampion();
+            }
             gameStart();
         } else {
             setTimeout(function () { gameStartCountDown(count - 1); }, 1000);
