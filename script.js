@@ -49,7 +49,6 @@ ImasCg.Pixelsquize = function () {
                 totalChampions = championNames.length;
                 numOfChampions['all'] = totalChampions;
                 numOfRemains['all'] = totalChampions;
-                //updateChampionCount();
                 loadAllChampions(); // 初期画面にチャンピオン全てを表示
             });
     };
@@ -189,6 +188,7 @@ ImasCg.Pixelsquize = function () {
 
     var resetFormAtGameEnd = function () {
         clearInterval(clearCount);
+        $('#answer-text').prop('disabled', 'false');
         $('#answer-btn').prop('disabled', 'false');
         $('#game-start-btn').removeClass('btn-danger').addClass('btn-success').val(BUTTON_LABEL['gameStart']);
         $('#game-start-btn').after($('<input type="button" id="result-tweet-btn" value="Share X(Tweet!)" class="btn btn-info">'));
@@ -224,6 +224,7 @@ ImasCg.Pixelsquize = function () {
 
     var gameStart = function () {
         $('#game-start-btn').removeClass('btn-success').addClass('btn-danger').prop('disabled', '').val(BUTTON_LABEL['giveUp']);
+        $('#answer-text').prop('disabled', '');
         $('#answer-btn').prop('disabled', '');
         $('#lang').prop('disabled', true);
         startUnixTime = parseInt((new Date) / 1);

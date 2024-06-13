@@ -14,7 +14,7 @@
             flex-wrap: wrap;
             justify-content: center;
             margin-top: 20px;
-            padding-top: 350px; /* 固定された要素の高さに合わせて調整 */
+            padding-top: 300px; /* 固定された要素の高さに合わせて調整 */
         }
         .champion-card {
             display: flex;
@@ -95,7 +95,7 @@
                         <span class="input-group-btn">
                           <button id="prevChampion" class="btn btn-default" type="button">＜＜</button>
                         </span>
-                        <input type="text" id="answer-text" class="form-control" />
+                        <input type="text" id="answer-text" class="form-control" disabled/>
                         <span class="input-group-btn">
                           <button id="nextChampion" class="btn btn-default" type="button">＞＞</button>
                         </span>
@@ -112,9 +112,8 @@
                 </div>
             </div>
             <div>
-                <h3>正解したチャンピオン</h3>
-                <div id="correctChampions"></div>
-                <div id="debug-champ-name"></div>
+                <!--<div id="correctChampions"></div>-->
+                <!--<div id="debug-champ-name"></div>-->
             </div>
         </div>
         <div id="contents">
