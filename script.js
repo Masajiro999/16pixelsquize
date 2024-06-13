@@ -141,8 +141,8 @@ ImasCg.Pixelsquize = function () {
             };
             renderImg.src = imgElement.src;
         });
-        var debugChampName = document.getElementById("debug-champ-name");
-        debugChampName.textContent = champion.name;
+        // var debugChampName = document.getElementById("debug-champ-name");
+        // debugChampName.textContent = champion.name;
 
     };
     var nextChampion = function () {
