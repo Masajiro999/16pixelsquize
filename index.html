@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>League of Legends Champion Guessing Game</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+	<link href="16pixelsqize.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        #championListContainer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+            padding-top: 350px; /* 固定された要素の高さに合わせて調整 */
+        }
+        .champion-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px; /* Add spacing between cards */
+            width: 120px; /* Adjust width as needed */
+            height: 95px; /* Adjust height as needed */
+            border: 1px solid #ccc; /* Add a subtle border */
+            border-radius: 5px; /* Round corners */
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Add a shadow effect */
+        }
+        .champion-thumbnail {
+            width: 50px;
+            height: 50px;
+            cursor: pointer; /* クリックを示すポインターに変更 */
+            margin-bottom: 5px; /* Add spacing between image and name */
+        }
+        .champion-name {
+            display: none; /* 初期状態では名前を非表示 */
+            text-align: center;
+            font-size: 16px; /* Adjust font size */
+            font-weight: bold; /* Make text bold */
+            color: #333; /* Set text color */
+        }
+        .champion-name.visible {
+            display: block; /* visible クラスが追加された場合に表示する */
+        }
+        #header {
+            position: fixed;
+            width: 100%;
+            background: white; /* 背景色を設定して他の要素が透けないようにする */
+            z-index: 1; /* 他の要素の上に表示する */
+        }
+          
+    </style>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9GYEY61YPG"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-9GYEY61YPG');
+    </script>
+</head>
+<body>
+	<div class="container">
+        <div id="header" class="row">
+            <div class="col-md-10">
+                <h2 class="text-muted">16ピクセルでもLoLチャンピオン言えるかな</h2>
+            </div>
+
+            <div class="col-md-2">
+                <div id="tweet-btn">
+                    <a href="https://x.com/share" class="twitter-share-button"
+                        data-url="https://masajiro999.github.io/16pixelsquize" data-text="16ピクセルでもLoLチャンピオン言えるかな" data-lang="ja"
+                        data-hashtags="16ピクセルクイズ">ポスト</a>
+                    <script>
+                        !function (d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+                            if (!d.getElementById(id)) {
+                                js = d.createElement(s);
+                                js.id = id;
+                                js.src = p + '://platform.twitter.com/widgets.js';
+                                fjs.parentNode.insertBefore(js, fjs);
+                            }
+                        }(document, 'script', 'x-wjs');
+                    </script>
+                </div>
+            </div>
+
+            <!-- 新しい入力エリア -->
+            <div id="answer-area" class="row">
+                <div class="col-md-10">
+                    <canvas id="championImage" width="40" height="40"></canvas>
+                    <div class="input-group col-md-3">
+                        <span class="input-group-btn">
+                          <button id="prevChampion" class="btn btn-default" type="button">＜＜</button>
+                        </span>
+                        <input type="text" id="answer-text" class="form-control" />
+                        <span class="input-group-btn">
+                          <button id="nextChampion" class="btn btn-default" type="button">＞＞</button>
+                        </span>
+                    </div>
+                    <input type="button" id="answer-btn" class="btn btn-primary" value="Answer" disabled />
+                    <input type="button" id="game-start-btn" class="btn btn-success" value="Start!" />
+                    <br />
+                    <div id="timer-area">000:00:00</div>
+                    <div id="remain-area">残り<span id="num-of-remain">○○</span>人&nbsp;</div>
+                    <br />
+                    <div id="result"></div>
+                    <div id="message-area">&nbsp;</div>
+
+                </div>
+            </div>
+            <div>
+                <h3>正解したチャンピオン</h3>
+                <div id="correctChampions"></div>
+                <div id="debug-champ-name"></div>
+            </div>
+        </div>
+        <div id="contents">
+            <div id="championListContainer"></div>
+        </div>
+        <div id="footer">
+            <p style="font-size:10px;color:#84a1a8;">© 2024 16ピクセルでもLoLチャンピオン言えるかな？ isn’t endorsed by Riot
+                Games
+                and doesn’t reflect the views or opinions of Riot Games or anyone officially involved in producing or
+                managing League of Legends. League of Legends and Riot Games are trademarks or registered trademarks of
+                Riot Games, Inc. League of Legends © Riot Games, Inc.</p>
+                <p>バグ報告・クレーム等は　<a href="https://x.com/masajiro" target="_blank">@masajiro</a>　まで</p>
+        </div>
+    </div>
+</body>
+</html>
