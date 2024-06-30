@@ -500,7 +500,7 @@ ImasCg.Pixelsquize = function () {
                 });
                 $('#answer-area').on('click', '#result-btn', function () {
                     revealNames();
-                });result-btn
+                });
             };
             jsonData = null;
             var lang = 'ja'
