@@ -503,10 +503,15 @@ ImasCg.Pixelsquize = function () {
                 });result-btn
             };
             jsonData = null;
-            var lang = 'ja_JP'
+            var lang = 'ja'
 			//var locales = 'locales/'+lang+'/champion.json';
-			var locales = 'https://ddragon.leagueoflegends.com/cdn/' + '14.12.1' + '/data/ja_JP/champion.json';
+			//var locales = 'https://ddragon.leagueoflegends.com/cdn/' + '14.12.1' + '/data/ja_JP/champion.json';
+            var locales = 'https://masajiro999.github.io/ierukana/locales/'+lang+'/champion.json';
 			$.getJSON(locales).done(function(data) {
+                // 最後の部分を除いたバージョン番号を取得
+                var newVersion = data.version.split(".").slice(0, -1).join(".");
+                $('#version').text(newVersion);
+
 				jsonData = Object.keys(data.data).map(function (key) {return data.data[key]});
 				innerInit();
 			}).fail(function(errorData) {
